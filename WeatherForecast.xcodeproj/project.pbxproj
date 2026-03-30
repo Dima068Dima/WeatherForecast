@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		35A0944C2F7AFC2D008E626B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35A0944B2F7AFC2D008E626B /* SnapKit */; };
+		35A0944E2F7AFC2D008E626B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 35A0944D2F7AFC2D008E626B /* SnapKit-Dynamic */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		35A094032F7AEF95008E626B /* WeatherForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35A0944C2F7AFC2D008E626B /* SnapKit in Frameworks */,
+				35A0944E2F7AFC2D008E626B /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,8 @@
 			);
 			name = WeatherForecast;
 			packageProductDependencies = (
+				35A0944B2F7AFC2D008E626B /* SnapKit */,
+				35A0944D2F7AFC2D008E626B /* SnapKit-Dynamic */,
 			);
 			productName = WeatherForecast;
 			productReference = 35A094032F7AEF95008E626B /* WeatherForecast.app */;
@@ -107,6 +116,9 @@
 			);
 			mainGroup = 35A093FA2F7AEF95008E626B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				35A0944A2F7AFC2D008E626B /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 35A094042F7AEF95008E626B /* Products */;
 			projectDirPath = "";
@@ -341,6 +353,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		35A0944A2F7AFC2D008E626B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		35A0944B2F7AFC2D008E626B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35A0944A2F7AFC2D008E626B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		35A0944D2F7AFC2D008E626B /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35A0944A2F7AFC2D008E626B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 35A093FB2F7AEF95008E626B /* Project object */;
 }
