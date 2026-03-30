@@ -1,0 +1,30 @@
+# === Xcode ===
+DerivedData/
+*.xccheckout
+*.xcscmblueprint
+xcuserdata/
+*.xcuserstate
+*.xcuserdatad/
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+build/
+Build/
+
+# === macOS системные файлы ===
+.DS_Store
+
+# === Swift Package Manager ===
+.build/
+.swiftpm/
+Package.resolved
+
+# === Игнорируем Pods (если используете CocoaPods) ===
+Pods/
+Podfile.lock
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+*~
