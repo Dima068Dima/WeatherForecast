@@ -19,7 +19,7 @@ final class HourlyWeatherCell: UICollectionViewCell {
     
     // MARK: - Private methods -
     private func setupUI() {
-        backgroundColor = .secondarySystemBackground
+        backgroundColor = .clear
         layer.cornerRadius = Constants.UI.cornerRadius
        
         addSubviews()
@@ -56,16 +56,18 @@ final class HourlyWeatherCell: UICollectionViewCell {
     private func setupTimeLabel() {
         timeLabel.font = .systemFont(ofSize: 14)
         timeLabel.textAlignment = .center
-        timeLabel.textColor = .secondaryLabel
+        timeLabel.textColor = .white.withAlphaComponent(0.8)
     }
     
     private func setupIconImageView() {
         iconImageView.contentMode = .scaleAspectFit
+        iconImageView.tintColor = .white
     }
     
     private func setupTemperatureLabel() {
         temperatureLabel.font = .systemFont(ofSize: 16, weight: .medium)
         temperatureLabel.textAlignment = .center
+        temperatureLabel.textColor = .white
     }
     
     // MARK: - Public methods -

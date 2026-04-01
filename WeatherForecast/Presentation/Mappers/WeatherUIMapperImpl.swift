@@ -35,6 +35,7 @@ final class WeatherUIMapperImpl {
             temperature: "\(Int(current.temperature))°",
             feelsLike: "\(Int(current.feelsLike))°",
             condition: current.condition,
+            conditionType: current.conditionType,
             icon: icon,
             windSpeed: current.windSpeed,
             humidity: current.humidity,

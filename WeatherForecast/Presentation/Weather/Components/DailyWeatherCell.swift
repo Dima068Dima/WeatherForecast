@@ -22,6 +22,7 @@ final class DailyWeatherCell: UITableViewCell {
     private func setupUI() {
         selectionStyle = .none
         backgroundColor = .clear
+        contentView.backgroundColor = .clear
         
         addSubviews()
         setupConstraints()
@@ -65,6 +66,7 @@ final class DailyWeatherCell: UITableViewCell {
     
     private func setupDateLabel() {
         dateLabel.font = .systemFont(ofSize: 16, weight: .medium)
+        dateLabel.textColor = .white
     }
     
     private func setupIconImageView() {
@@ -74,11 +76,13 @@ final class DailyWeatherCell: UITableViewCell {
     private func setupConditionLabel() {
         conditionLabel.font = .systemFont(ofSize: 14)
         conditionLabel.textColor = .secondaryLabel
+        conditionLabel.textColor = .white.withAlphaComponent(0.8)
     }
     
     private func setupTempLabel() {
         tempLabel.font = .systemFont(ofSize: 16, weight: .medium)
         tempLabel.textAlignment = .right
+        tempLabel.textColor = .white
     }
     
     // MARK: - Public methods -

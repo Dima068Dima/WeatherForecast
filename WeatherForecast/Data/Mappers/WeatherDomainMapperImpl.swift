@@ -10,6 +10,7 @@ final class WeatherDomainMapperImpl {
             temperature: current.tempC,
             feelsLike: current.feelslikeC,
             condition: current.condition.text,
+            conditionType: WeatherCondition(from: current.condition.text),
             iconURL: "https:\(current.condition.icon)",
             imageData: nil,
             windSpeed: current.windKph,

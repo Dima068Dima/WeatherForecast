@@ -38,10 +38,14 @@ final class WeatherViewController: UIViewController {
     
     // MARK: - Setup
     private func setupUI() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .clear
         
         addSubviews()
         setupConstraints()
+        
+        weatherView.backgroundColor = .clear
+        loadingView.backgroundColor = .clear
+        errorView.backgroundColor = .clear
         
         weatherView.isHidden = true
         loadingView.isHidden = true
@@ -49,12 +53,17 @@ final class WeatherViewController: UIViewController {
     }
     
     private func addSubviews() {
+        view.addSubview(backgroundView)
         view.addSubview(weatherView)
         view.addSubview(loadingView)
         view.addSubview(errorView)
     }
     
     private func setupConstraints() {
+        backgroundView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
         weatherView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.leading.trailing.bottom.equalToSuperview()
@@ -74,9 +83,13 @@ final class WeatherViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithDefaultBackground()
+        appearance.configureWithTransparentBackground()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.tintColor = .white
     }
     
     private func setupBindings() {
@@ -95,12 +108,13 @@ final class WeatherViewController: UIViewController {
     // MARK: - State handling
     private func handleState(_ state: ViewState<WeatherUI>) {
         switch state {
-        case .loading:
-            showLoading()
-        case .success(let weather):
-            showWeather(weather)
-        case .error(let message):
-            showError(message)
+            case .loading:
+                showLoading()
+            case .success(let weather):
+                showWeather(weather)
+                updateBackground(for: weather.current.conditionType)
+            case .error(let message):
+                showError(message)
         }
     }
     
@@ -117,6 +131,12 @@ final class WeatherViewController: UIViewController {
         errorView.isHidden = true
         weatherView.isHidden = false
         weatherView.configure(with: weather)
+    }
+    
+    private func updateBackground(for condition: WeatherCondition) {
+        if let gradientBackground = backgroundView as? GradientBackgroundView {
+            gradientBackground.updateForWeatherCondition(condition)
+        }
     }
     
     private func showError(_ message: String) {

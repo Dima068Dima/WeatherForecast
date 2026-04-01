@@ -13,6 +13,7 @@ final class WeatherView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+        applyGlassmorphism()
     }
     
     required init?(coder: NSCoder) {
@@ -21,7 +22,7 @@ final class WeatherView: UIView {
     
     // MARK: - Setup
     private func setupUI() {
-        backgroundColor = .systemBackground
+        backgroundColor = .clear
         
         addSubviews()
         setupConstraints()
@@ -68,6 +69,14 @@ final class WeatherView: UIView {
     
     private func setupScrollView() {
         scrollView.showsVerticalScrollIndicator = false
+    }
+    
+    private func applyGlassmorphism() {
+        [currentWeatherCard, hourlyForecastView, dailyForecastView].forEach { view in
+            view.backgroundColor = UIColor.white.withAlphaComponent(0.15)
+            view.layer.cornerRadius = 20
+            view.layer.masksToBounds = true
+        }
     }
     
     // MARK: - Public methods -

@@ -11,6 +11,7 @@ struct CurrentWeatherUI: Equatable {
     let temperature: String
     let feelsLike: String
     let condition: String
+    let conditionType: WeatherCondition
     let icon: UIImage?
     let windSpeed: Double
     let humidity: Int

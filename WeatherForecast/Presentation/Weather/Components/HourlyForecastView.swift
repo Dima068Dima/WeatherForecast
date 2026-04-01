@@ -7,6 +7,7 @@ final class HourlyForecastView: UIView {
         let label = UILabel()
         label.text = "Почасовой прогноз"
         label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.textColor = .white
         return label
     }()
     
@@ -35,6 +36,8 @@ final class HourlyForecastView: UIView {
     }
     
     private func setupUI() {
+        backgroundColor = .clear
+        
         addSubview(titleLabel)
         addSubview(collectionView)
         

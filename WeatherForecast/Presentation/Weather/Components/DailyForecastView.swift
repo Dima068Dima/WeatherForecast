@@ -7,6 +7,7 @@ final class DailyForecastView: UIView {
         let label = UILabel()
         label.text = "Прогноз на 3 дня"
         label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.textColor = .white
         return label
     }()
     
@@ -31,6 +32,8 @@ final class DailyForecastView: UIView {
     }
     
     private func setupUI() {
+        backgroundColor = .clear
+        
         addSubview(titleLabel)
         addSubview(tableView)
         

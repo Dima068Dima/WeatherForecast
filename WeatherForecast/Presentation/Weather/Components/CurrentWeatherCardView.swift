@@ -6,7 +6,6 @@ final class CurrentWeatherCardView: UIView {
     private let cityLabel = UILabel()
     private let temperatureLabel = UILabel()
     private let conditionLabel = UILabel()
-    
     private let detailsStackView = UIStackView()
     
     // MARK: - Init
@@ -21,6 +20,8 @@ final class CurrentWeatherCardView: UIView {
     
     // MARK: - Private methods -
     private func setupUI() {
+        backgroundColor = .clear
+        
         addSubviews()
         setupConstraints()
         setupSelf()
@@ -74,16 +75,19 @@ final class CurrentWeatherCardView: UIView {
     private func setupCityLabel() {
         cityLabel.font = .systemFont(ofSize: 32, weight: .medium)
         cityLabel.textAlignment = .center
+        cityLabel.textColor = .white
         cityLabel.numberOfLines = 0
     }
     
     private func setupTemperatureLabel() {
         temperatureLabel.font = .systemFont(ofSize: 72, weight: .thin)
         temperatureLabel.textAlignment = .center
+        temperatureLabel.textColor = .white
     }
     
     private func setupConditionLabel() {
         conditionLabel.font = .systemFont(ofSize: 18, weight: .regular)
+        conditionLabel.textColor = .white.withAlphaComponent(0.8)
         conditionLabel.textColor = .secondaryLabel
         conditionLabel.textAlignment = .center
     }
@@ -108,6 +112,7 @@ final class CurrentWeatherCardView: UIView {
         valueLabel.text = value
         valueLabel.font = .systemFont(ofSize: 13)
         valueLabel.textColor = .secondaryLabel
+        valueLabel.textColor = .white.withAlphaComponent(0.8)
         
         stack.addArrangedSubview(iconLabel)
         stack.addArrangedSubview(valueLabel)
