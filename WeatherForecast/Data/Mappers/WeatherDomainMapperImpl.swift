@@ -90,7 +90,7 @@ final class WeatherDomainMapperImpl {
     
     private func formatDate(from dateString: String) -> String {
         if let date = DateFormatter.dateFormatter.date(from: dateString) {
-            return DateFormatter.dayFormatter.string(from: date).capitalized
+            return DateFormatter.weekdayShortWithDayFormatter.string(from: date).capitalized
         }
         return dateString
     }

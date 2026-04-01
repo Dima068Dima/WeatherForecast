@@ -2,30 +2,14 @@ import UIKit
 import SnapKit
 
 final class HourlyForecastView: UIView {
-    
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Почасовой прогноз"
-        label.font = .systemFont(ofSize: 20, weight: .semibold)
-        label.textColor = .white
-        return label
-    }()
-    
-    private let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 70, height: 100)
-        layout.minimumLineSpacing = 12
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.backgroundColor = .clear
-        collection.showsHorizontalScrollIndicator = false
-        return collection
-    }()
-    
+    // MARK: - UI components
+    private let titleLabel = UILabel()
+    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+ 
+    // MARK: - Properties
     private var hourlyData: [HourlyWeatherUI] = []
     
+    // MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -35,42 +19,81 @@ final class HourlyForecastView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Private methods -
     private func setupUI() {
         backgroundColor = .clear
         
+        addSubviews()
+        setupConstraints()
+        setupTitleLabel()
+        setupCollectionView()
+    }
+    
+    private func addSubviews() {
         addSubview(titleLabel)
         addSubview(collectionView)
-        
-        collectionView.register(HourlyWeatherCell.self, forCellWithReuseIdentifier: "HourlyWeatherCell")
-        collectionView.dataSource = self
-        
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+    }
+    
+    private func setupConstraints() {
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(8)
+            $0.leading.equalToSuperview().offset(13)
+            $0.trailing.equalToSuperview().offset(-13)
         }
         
-        collectionView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(12)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.height.equalTo(100)
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(8)
+            $0.leading.trailing.equalToSuperview().offset(5)
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(100)
         }
     }
     
+    private func setupTitleLabel() {
+        titleLabel.text = Strings.Titles.hourlyForecast
+        titleLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        titleLabel.textColor = .white
+    }
+    
+    private func setupCollectionView() {
+        let layout = makeCollectionViewLayout()
+        collectionView.collectionViewLayout = layout
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        
+        collectionView.register(HourlyWeatherCell.self, forCellWithReuseIdentifier: Constants.Identifiers.hourlyWeatherCell)
+        collectionView.dataSource = self
+    }
+    
+    func makeCollectionViewLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 60, height: 100)
+        layout.minimumLineSpacing = 5
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
+        return layout
+    }
+    
+    // MARK: - Public methods -
     func configure(with hourly: [HourlyWeatherUI]) {
         self.hourlyData = hourly
         collectionView.reloadData()
     }
 }
 
+// MARK: - UICollectionViewDataSource -
 extension HourlyForecastView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return hourlyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourlyWeatherCell", for: indexPath) as! HourlyWeatherCell
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: Constants.Identifiers.hourlyWeatherCell,
+            for: indexPath
+        ) as? HourlyWeatherCell else {
+            return UICollectionViewCell()
+        }
         cell.configure(with: hourlyData[indexPath.item])
         return cell
     }

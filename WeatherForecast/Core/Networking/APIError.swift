@@ -11,20 +11,20 @@ enum APIError: LocalizedError {
     
     var errorDescription: String? {
         switch self {
-        case .invalidURL:
-            return "Неверный адрес запроса"
-        case .noData:
-            return "Нет данных от сервера"
-        case .decodingError:
-            return "Ошибка обработки данных"
-        case .networkError(let error):
-            return "Ошибка сети: \(error.localizedDescription)"
-        case .invalidResponse:
-            return "Неверный ответ сервера"
-        case .unauthorized:
-            return "Ошибка авторизации"
-        case .notFound:
-            return "Ресурс не найден"
+            case .invalidURL:
+                return Strings.Errors.invalidURL
+            case .noData:
+                return Strings.Errors.noData
+            case .decodingError:
+                return Strings.Errors.decodingError
+            case .networkError(let error):
+                return "\(Strings.Errors.network) \(error.localizedDescription)"
+            case .invalidResponse:
+                return Strings.Errors.invalidResponse
+            case .unauthorized:
+                return Strings.Errors.unauthorized
+            case .notFound:
+                return Strings.Errors.notFound
         }
     }
 }

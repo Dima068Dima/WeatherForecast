@@ -25,15 +25,15 @@ final class WeatherUIMapperImpl {
     private func mapCurrentWeather(_ current: CurrentWeather) -> CurrentWeatherUI {
         let icon = current.imageData.flatMap { UIImage(data: $0) }
         let details = [
-            WeatherDetail(icon: "💨", value: "\(Int(current.windSpeed)) км/ч"),
-            WeatherDetail(icon: "💧", value: "\(current.humidity)%"),
+            WeatherDetail(icon: "💨", value: "\(Int(current.windSpeed)) \(Strings.WeatherDetails.windSpeed)"),
+            WeatherDetail(icon: "💧", value: "\(current.humidity)\(Strings.WeatherDetails.humidity)"),
             WeatherDetail(icon: "☀️", value: "UV \(Int(current.uvIndex))"),
-            WeatherDetail(icon: "🌡️", value: "\(Int(current.feelsLike))°")
+            WeatherDetail(icon: "🌡️", value: "\(Int(current.feelsLike))\(Strings.WeatherDetails.feelsLike)")
         ]
         
         return CurrentWeatherUI(
-            temperature: "\(Int(current.temperature))°",
-            feelsLike: "\(Int(current.feelsLike))°",
+            temperature: "\(Int(current.temperature))\(Strings.WeatherDetails.temperature)",
+            feelsLike: "\(Int(current.feelsLike))\(Strings.WeatherDetails.feelsLike)",
             condition: current.condition,
             conditionType: current.conditionType,
             icon: icon,
@@ -49,7 +49,7 @@ final class WeatherUIMapperImpl {
         
         return HourlyWeatherUI(
             time: hourly.time,
-            temperature: "\(Int(hourly.temperature))°",
+            temperature: "\(Int(hourly.temperature))\(Strings.WeatherDetails.temperature)",
             condition: hourly.condition,
             icon: icon
         )
@@ -60,8 +60,8 @@ final class WeatherUIMapperImpl {
         
         return DailyWeatherUI(
             date: daily.date,
-            maxTemp: "\(Int(daily.maxTemp))°",
-            minTemp: "\(Int(daily.minTemp))°",
+            maxTemp: "\(Int(daily.maxTemp))\(Strings.WeatherDetails.temperature)",
+            minTemp: "\(Int(daily.minTemp))\(Strings.WeatherDetails.temperature)",
             condition: daily.condition,
             icon: icon
         )

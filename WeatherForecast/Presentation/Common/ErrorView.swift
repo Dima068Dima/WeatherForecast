@@ -71,10 +71,10 @@ final class ErrorView: UIView {
     }
     
     private func setupRetryButton() {
-        retryButton.setTitle("Повторить", for: .normal)
+        retryButton.setTitle(Strings.Buttons.retry, for: .normal)
         retryButton.backgroundColor = .systemBlue
         retryButton.setTitleColor(.white, for: .normal)
-        retryButton.layer.cornerRadius = Constants.UI.cornerRadius
+        retryButton.layer.cornerRadius = 12
         retryButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
     }
     

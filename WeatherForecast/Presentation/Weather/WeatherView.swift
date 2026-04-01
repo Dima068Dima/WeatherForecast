@@ -57,12 +57,14 @@ final class WeatherView: UIView {
         
         hourlyForecastView.snp.makeConstraints {
             $0.top.equalTo(currentWeatherCard.snp.bottom).offset(32)
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().offset(-16)
         }
         
         dailyForecastView.snp.makeConstraints {
             $0.top.equalTo(hourlyForecastView.snp.bottom).offset(24)
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.equalToSuperview().offset(-20)
         }
     }

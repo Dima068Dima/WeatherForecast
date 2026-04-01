@@ -79,7 +79,7 @@ final class WeatherViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        title = "Погода"
+        title = Strings.Navigation.weather
         navigationController?.navigationBar.prefersLargeTitles = true
         
         let appearance = UINavigationBarAppearance()

@@ -65,11 +65,11 @@ final class CurrentWeatherCardView: UIView {
     
     private func setupSelf() {
         backgroundColor = .systemBackground
-        layer.cornerRadius = Constants.UI.largeCornerRadius
+        layer.cornerRadius = 12
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.1
         layer.shadowOffset = CGSize(width: 0, height: 2)
-        layer.shadowRadius = Constants.UI.shadowRadius
+        layer.shadowRadius = 12
     }
     
     private func setupCityLabel() {
@@ -88,7 +88,7 @@ final class CurrentWeatherCardView: UIView {
     private func setupConditionLabel() {
         conditionLabel.font = .systemFont(ofSize: 18, weight: .regular)
         conditionLabel.textColor = .white.withAlphaComponent(0.8)
-        conditionLabel.textColor = .secondaryLabel
+        conditionLabel.textColor = .white
         conditionLabel.textAlignment = .center
     }
     
@@ -107,6 +107,7 @@ final class CurrentWeatherCardView: UIView {
         let iconLabel = UILabel()
         iconLabel.text = icon
         iconLabel.font = .systemFont(ofSize: 24)
+        iconLabel.textColor = .white.withAlphaComponent(0.8)
         
         let valueLabel = UILabel()
         valueLabel.text = value

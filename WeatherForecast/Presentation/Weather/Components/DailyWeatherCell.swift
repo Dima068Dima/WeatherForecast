@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-final class DailyWeatherCell: UITableViewCell {
+final class DailyWeatherCell: UITableViewCell {    
     // MARK: - UI components
     private let dateLabel = UILabel()
     private let iconImageView = UIImageView()

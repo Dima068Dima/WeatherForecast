@@ -28,7 +28,7 @@ final class WeatherViewModel {
         } catch let error as APIError {
             state = .error(error.localizedDescription)
         } catch {
-            state = .error("Произошла неизвестная ошибка")
+            state = .error(Strings.Errors.unknown)
         }
     }
     

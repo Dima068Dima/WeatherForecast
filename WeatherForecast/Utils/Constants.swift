@@ -6,16 +6,16 @@ enum Constants {
     static let defaultLongitude: Double = 37.6173
     static let defaultCity: String = "Москва"
     
+    // MARK: - API -
     enum API {
         static let baseURL = "http://api.weatherapi.com/v1"
         static let apiKey = "fa8b3df74d4042b9aa7135114252304"
         static let timeoutInterval: TimeInterval = 30
     }
-    
-    enum UI {
-        static let cornerRadius: CGFloat = 12
-        static let shadowRadius: CGFloat = 8
-        static let animationDuration: TimeInterval = 0.3
-        static let largeCornerRadius: CGFloat = 20
+
+    // MARK: - Identifiers -
+    enum Identifiers {
+        static let hourlyWeatherCell = "HourlyWeatherCell"
+        static let dailyWeatherCell = "DailyWeatherCell"
     }
 }

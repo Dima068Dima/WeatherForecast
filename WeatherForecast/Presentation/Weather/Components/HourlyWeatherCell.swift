@@ -20,7 +20,7 @@ final class HourlyWeatherCell: UICollectionViewCell {
     // MARK: - Private methods -
     private func setupUI() {
         backgroundColor = .clear
-        layer.cornerRadius = Constants.UI.cornerRadius
+        layer.cornerRadius = 12
        
         addSubviews()
         setupConstraints()
