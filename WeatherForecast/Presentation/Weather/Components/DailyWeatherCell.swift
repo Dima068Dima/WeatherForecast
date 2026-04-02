@@ -75,8 +75,7 @@ final class DailyWeatherCell: UITableViewCell {
     
     private func setupConditionLabel() {
         conditionLabel.font = .systemFont(ofSize: 14)
-        conditionLabel.textColor = .secondaryLabel
-        conditionLabel.textColor = .white.withAlphaComponent(0.8)
+        conditionLabel.textColor = .white
     }
     
     private func setupTempLabel() {

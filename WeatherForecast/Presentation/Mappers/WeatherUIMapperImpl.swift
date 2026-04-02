@@ -27,7 +27,7 @@ final class WeatherUIMapperImpl {
         let details = [
             WeatherDetail(icon: "💨", value: "\(Int(current.windSpeed)) \(Strings.WeatherDetails.windSpeed)"),
             WeatherDetail(icon: "💧", value: "\(current.humidity)\(Strings.WeatherDetails.humidity)"),
-            WeatherDetail(icon: "☀️", value: "UV \(Int(current.uvIndex))"),
+            WeatherDetail(icon: "☀️", value: "\(Strings.WeatherDetails.uv) \(Int(current.uvIndex))"),
             WeatherDetail(icon: "🌡️", value: "\(Int(current.feelsLike))\(Strings.WeatherDetails.feelsLike)")
         ]
         

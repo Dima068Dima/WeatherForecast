@@ -6,11 +6,14 @@ final class WeatherDomainMapperImpl {
         _ current: CurrentWeatherDTO.Current,
         location: CurrentWeatherDTO.Location
     ) -> CurrentWeather {
+        let englishCondition = current.condition.text
+        let conditionType = WeatherCondition(from: englishCondition)
+        
         return CurrentWeather(
             temperature: current.tempC,
             feelsLike: current.feelslikeC,
-            condition: current.condition.text,
-            conditionType: WeatherCondition(from: current.condition.text),
+            condition: conditionType.russianName,
+            conditionType: conditionType,
             iconURL: "https:\(current.condition.icon)",
             imageData: nil,
             windSpeed: current.windKph,
@@ -30,27 +33,33 @@ final class WeatherDomainMapperImpl {
         
         for hour in todayForecast.hour {
             let hourComponent = calendar.component(.hour, from: parseDate(hour.time))
+            let conditionType = WeatherCondition(from: hour.condition.text)
             if hourComponent >= currentHour {
-                hourlyWeather.append(HourlyWeather(
-                    time: formatHour(from: hour.time),
-                    temperature: hour.tempC,
-                    condition: hour.condition.text,
-                    iconURL: "https:\(hour.condition.icon)",
-                    imageData: nil
-                ))
+                hourlyWeather.append(
+                    HourlyWeather(
+                        time: formatHour(from: hour.time),
+                        temperature: hour.tempC,
+                        condition: conditionType.russianName,
+                        iconURL: "https:\(hour.condition.icon)",
+                        imageData: nil
+                    )
+                )
             }
         }
         
         if forecast.forecast.forecastday.count > 1 {
             let nextDay = forecast.forecast.forecastday[1]
             for hour in nextDay.hour {
-                hourlyWeather.append(HourlyWeather(
-                    time: formatHour(from: hour.time),
-                    temperature: hour.tempC,
-                    condition: hour.condition.text,
-                    iconURL: "https:\(hour.condition.icon)",
-                    imageData: nil
-                ))
+                let conditionType = WeatherCondition(from: hour.condition.text)
+                hourlyWeather.append(
+                    HourlyWeather(
+                        time: formatHour(from: hour.time),
+                        temperature: hour.tempC,
+                        condition: conditionType.rawValue,
+                        iconURL: "https:\(hour.condition.icon)",
+                        imageData: nil
+                    )
+                )
             }
         }
         
@@ -59,11 +68,14 @@ final class WeatherDomainMapperImpl {
     
     private func mapDailyWeather(from forecast: ForecastResponseDTO) -> [DailyWeather] {
         return forecast.forecast.forecastday.map { day in
-            DailyWeather(
+            let englishCondition = day.day.condition.text
+            let conditionType = WeatherCondition(from: englishCondition)
+            
+            return DailyWeather(
                 date: formatDate(from: day.date),
                 maxTemp: day.day.maxtempC,
                 minTemp: day.day.mintempC,
-                condition: day.day.condition.text,
+                condition: conditionType.russianName,
                 iconURL: "https:\(day.day.condition.icon)",
                 imageData: nil
             )

@@ -57,8 +57,8 @@ final class CurrentWeatherCardView: UIView {
         
         detailsStackView.snp.makeConstraints {
             $0.top.equalTo(conditionLabel.snp.bottom).offset(20)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.leading.equalToSuperview().offset(13)
+            $0.trailing.equalToSuperview().offset(-13)
             $0.bottom.equalToSuperview().offset(-20)
         }
     }
@@ -87,7 +87,6 @@ final class CurrentWeatherCardView: UIView {
     
     private func setupConditionLabel() {
         conditionLabel.font = .systemFont(ofSize: 18, weight: .regular)
-        conditionLabel.textColor = .white.withAlphaComponent(0.8)
         conditionLabel.textColor = .white
         conditionLabel.textAlignment = .center
     }
@@ -107,13 +106,13 @@ final class CurrentWeatherCardView: UIView {
         let iconLabel = UILabel()
         iconLabel.text = icon
         iconLabel.font = .systemFont(ofSize: 24)
-        iconLabel.textColor = .white.withAlphaComponent(0.8)
+        iconLabel.textColor = .white
         
         let valueLabel = UILabel()
         valueLabel.text = value
         valueLabel.font = .systemFont(ofSize: 13)
         valueLabel.textColor = .secondaryLabel
-        valueLabel.textColor = .white.withAlphaComponent(0.8)
+        valueLabel.textColor = .white
         
         stack.addArrangedSubview(iconLabel)
         stack.addArrangedSubview(valueLabel)

@@ -52,7 +52,7 @@ final class LoadingView: UIView {
     private func setupTitleLabel() {
         titleLabel.text = Strings.Titles.loading
         titleLabel.font = .systemFont(ofSize: 16, weight: .medium)
-        titleLabel.textColor = .secondaryLabel
+        titleLabel.textColor = .white
         titleLabel.textAlignment = .center
     }
     

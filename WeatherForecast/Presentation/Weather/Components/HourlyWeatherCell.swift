@@ -56,7 +56,7 @@ final class HourlyWeatherCell: UICollectionViewCell {
     private func setupTimeLabel() {
         timeLabel.font = .systemFont(ofSize: 14)
         timeLabel.textAlignment = .center
-        timeLabel.textColor = .white.withAlphaComponent(0.8)
+        timeLabel.textColor = .white
     }
     
     private func setupIconImageView() {
