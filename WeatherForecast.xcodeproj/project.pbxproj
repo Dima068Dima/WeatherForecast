@@ -16,10 +16,10 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		35A094152F7AEF96008E626B /* Exceptions for "WeatherForecast" folder in "WeatherForecast" target */ = {
+		353577DD2F7EFB44000747B1 /* Exceptions for "WeatherForecast" folder in "WeatherForecast" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Resources/Info.plist,
 			);
 			target = 35A094022F7AEF95008E626B /* WeatherForecast */;
 		};
@@ -29,7 +29,7 @@
 		35A094052F7AEF95008E626B /* WeatherForecast */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				35A094152F7AEF96008E626B /* Exceptions for "WeatherForecast" folder in "WeatherForecast" target */,
+				353577DD2F7EFB44000747B1 /* Exceptions for "WeatherForecast" folder in "WeatherForecast" target */,
 			);
 			path = WeatherForecast;
 			sourceTree = "<group>";
@@ -159,7 +159,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherForecast/Info.plist;
+				INFOPLIST_FILE = WeatherForecast/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -190,7 +190,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherForecast/Info.plist;
+				INFOPLIST_FILE = WeatherForecast/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
